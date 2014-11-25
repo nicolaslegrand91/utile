@@ -75,7 +75,8 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    # alias ls='ls --color=auto'
+    alias ls='ls -G'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -171,9 +172,10 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 export PYTHONPATH=/anaconda/lib/python2.7/site-packages
 
-export WORKON_HOME=/home/maxime/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
-export PIP_VIRTUALENV_BASE=/home/maxime/.virtualenvs
+# Maxime : doesn't seem useful for conda virtualenvs
+# export WORKON_HOME=/home/maxime/.virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
+# export PIP_VIRTUALENV_BASE=/home/maxime/.virtualenvs
 
 export PYENV_ROOT="${HOME}/.pyenv"
 
@@ -181,3 +183,7 @@ if [ -d "${PYENV_ROOT}" ]; then
   export PATH="${PYENV_ROOT}/bin:${PATH}"
   eval "$(pyenv init -)"
 fi
+
+# MAXIME alias courant
+alias ipynb='ipython notebook'
+alias sapy3='source activate py3'

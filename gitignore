@@ -36,7 +36,8 @@ develop
 *.csv
 *.xlsx
 
-
+# MAC OS X
+*.DS_Store
 
 
 # Byte-compiled / optimized / DLL files
