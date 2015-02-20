@@ -35,7 +35,6 @@ def resize(im_path, save_path):
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='0.1')
-    print(arguments)
     
     save_dir = os.path.join(os.getcwd(), 'LQ')
     if not os.path.exists(save_dir):
