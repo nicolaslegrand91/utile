@@ -31,7 +31,7 @@ def resize(im_path, save_path):
     else:
         if im.size[1] > max_height:
             im = im.resize((int(max_width*ratio), max_height))
-    im.save(save_path)
+    im.save(save_path, quality=quality, progressive=True)
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='0.1')
