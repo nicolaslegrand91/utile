@@ -30,7 +30,7 @@ def resize(im_path, save_path):
             im = im.resize((max_width, int(max_width/ratio)))
     else:
         if im.size[1] > max_height:
-            im = im.resize((max_width*ratio, max_height))
+            im = im.resize((int(max_width*ratio), max_height))
     im.save(save_path)
 
 if __name__ == '__main__':
@@ -48,5 +48,6 @@ if __name__ == '__main__':
 
     # apply the resize function to every image
     for image in arguments['<nom_image_1>']:
-        resize(os.path.join(os.getcwd(), image),
-               os.path.join(os.getcwd(), 'LQ', image))
+        source_path = os.path.join(os.getcwd(), image)
+        if not(os.path.isdir(source_path)):
+            resize(source_path, os.path.join(os.getcwd(), 'LQ', image))
