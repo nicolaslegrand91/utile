@@ -26,7 +26,7 @@ def resize(im_path, save_path):
     ratio = im.size[0]/im.size[1]
     if (ratio >=1):
         # cas largeur plus grande
-        if im.size[0] > max_width:
+        if im.size[0] > int(max_width):
             im = im.resize((max_width, int(max_width/ratio)))
     else:
         if im.size[1] > max_height:
@@ -41,8 +41,8 @@ if __name__ == '__main__':
         os.makedirs(save_dir) 
 
     # getting the arguments
-    max_width = arguments['--max_w'] or 1500
-    max_height = arguments['--max_h'] or 1500
+    max_width = int(arguments['--max_w'] or 1500)
+    max_height = int(arguments['--max_h'] or 1500)
     quality = arguments['-q'] or 60
 
     # apply the resize function to every image

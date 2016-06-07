@@ -9,6 +9,9 @@ sftp-config.json
 .pydevproject
 develop
 
+# virtualenv
+.env
+
 # Compiled python modules.
 *.pyc
 *.pyw
