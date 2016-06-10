@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export HDF5_DISABLE_VERSION_CHECK=2
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -75,7 +77,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    # alias ls='ls --color=auto'
     # alias ls='ls -G'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -84,6 +86,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+alias ls='ls -G' 
+
+export GREP_OPTIONS="--exclude-dir=.git --color=auto"
+GREP_COLOR='1;32'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -113,9 +119,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# added by Anaconda 1.8.0 installer
-export PATH="/home/maxime/anaconda/bin:$PATH"
 
 # added from Danish's bash_promt
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
@@ -170,14 +173,6 @@ function parse_git_branch() {
 export PS1="\[${BOLD}${MAGENTA}\]\u \[$WHITE\]at \[$ORANGE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
-export PYTHONPATH=/anaconda/lib/python2.7/site-packages
-
-# Maxime : doesn't seem useful for conda virtualenvs
-# export WORKON_HOME=/home/maxime/.virtualenvs
-# source /usr/local/bin/virtualenvwrapper.sh
-# export PIP_VIRTUALENV_BASE=/home/maxime/.virtualenvs
-
-export PYENV_ROOT="${HOME}/.pyenv"
 
 if [ -d "${PYENV_ROOT}" ]; then
   export PATH="${PYENV_ROOT}/bin:${PATH}"
