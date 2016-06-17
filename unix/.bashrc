@@ -182,3 +182,5 @@ fi
 # MAXIME alias courant
 alias ipynb='ipython notebook'
 alias sapy3='source activate py3'
+alias gitbook='git ci -am "pti bug" && git push book'
+alias book='ssh -t book tmux a'
